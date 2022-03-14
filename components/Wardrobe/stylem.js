@@ -25,7 +25,7 @@ const stylem = StyleSheet.create({
     height: 130,
     left: 12, right:20,
     position:'absolute',
-    backgroundColor:'#faf9f6',
+    backgroundColor:'#fcf9f6',
     borderRadius: 5,
     marginTop: '30%',marginLeft:'2%'
   },
@@ -34,63 +34,53 @@ const stylem = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: '600',
     textAlign:'right',
-    fontSize: 20,
+    fontSize: 18,
     lineHeight: 28,
     color: '#5C514D',
     marginTop: '8%',
     marginRight:'1%',
-    marginLeft: '25%',
-  },
-  button: {
-    position:'absolute',
-    marginTop: '5%',
-    marginLeft: '10%',
-    width: '60%',
+    marginLeft: '2%',
   },
   box2:{
-    width: 280,
-    height: 30,
-    left: 20, right:25,
+    backgroundColor: '#f3f0ec',
+    position:'relative',
+    marginTop: '50%',
+    width: 300, height: 220, marginLeft:'3%'
+  },
+  image1: {
     position:'absolute',
-    backgroundColor:'#dbcfc5',
-    borderRadius: 10,
-    marginTop: '79%',
+    backgroundColor: '#fcf9f6',
+    width: 70, height: 70,marginTop:'7%',marginLeft: '5%'
+  },
+  image2: {
+    position:'absolute',
+    backgroundColor: '#fcf9f6',
+    width: 30, height: 70,marginTop:'7%',marginLeft: '35%'
+  },
+  image3: {
+    position:'absolute',
+    backgroundColor: '#fcf9f6',
+    width: 40, height: 75,marginTop:'7%', marginLeft: '68%'
+  },
+  image4: {
+    position:'absolute',
+    backgroundColor: '#fcf9f6',
+    width: 70, height: 10,marginTop:'37%',marginLeft: '5%'
+  },
+  image5: {
+    position:'absolute',
+    backgroundColor: '#fcf9f6',
+    width: 30, height: 30,marginTop:'37%',marginLeft: '35%'
+  },
+  image6: {
+    position:'absolute',
+    backgroundColor: '#fcf9f6',
+    width: 50, height: 75,marginTop:'37%',marginLeft: '68%'
+  },
+  cat1: {
+    position: 'relative',
   },
   title3: {
-    position:'absolute',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    textAlign:'right',
-    fontSize: 16,
-    lineHeight: 15,
-    color: '#5C514D',
-    marginTop: '8%',
-    marginRight:'1%',
-    marginLeft: '5%',
-  },
-  stat: {
-
-  },
-  box3:{
-    width: 130,
-    height: 28,
-    left: 2, right:25,
-    position:'absolute',
-    backgroundColor:'#ffffff',
-    borderRadius: 5,
-    marginTop: '27%',
-  },
-  box4:{
-    width: 130,
-    height: 65,
-    left: 2, right:15,
-    position:'absolute',
-    backgroundColor:'#ffffff',
-    borderRadius: 5,
-    marginTop: '27%',
-    marginLeft: '50%',
-  },
-  text: {
     position:'absolute',
     fontStyle: 'normal',
     fontWeight: '600',
@@ -98,35 +88,48 @@ const stylem = StyleSheet.create({
     fontSize: 18,
     lineHeight: 28,
     color: '#5C514D',
-    marginTop: '2%',
-    marginLeft: '20%',
+    marginTop: '1%',
+    marginRight:'1%',
+    marginLeft: '2%',
   },
-  box5:{
-    width: 280,
-    height: 200,
-    left: 2, right:18,
+  box3:{
+    backgroundColor: '#f3f0ec',
+    position:'relative',
+    width: 300, height: 220, marginLeft:'3%'
+  },
+  image7: {
     position:'absolute',
-    marginTop: '55%',
+    backgroundColor: '#fcf9f6',
+    width: 120, height: 130,marginTop:'12%',marginLeft: '5%'
   },
-  image2: {
+  image8: {
     position:'absolute',
-    width: '60%',
-    height: 170,
-    marginTop:'10%',marginLeft: '15%'
+    backgroundColor: '#fcf9f6',
+    width: 120, height: 148,marginTop:'12%',marginLeft: '55%'
   },
-  title4: {
+  ouft1: {
     position:'absolute',
     fontStyle: 'normal',
     fontWeight: '600',
     textAlign:'right',
-    fontSize: 19,
+    fontSize: 16,
     lineHeight: 28,
     color: '#5C514D',
+    marginTop: '65%',
+    marginRight:'1%',
+    marginLeft: '2%',
   },
-  btn: {
-    position: 'relative',
-    marginLeft:'70%',
-    marginTop: '65%'
-  }
+  ouft2: {
+    position:'absolute',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    textAlign:'right',
+    fontSize: 16,
+    lineHeight: 28,
+    color: '#5C514D',
+    marginTop: '65%',
+    marginRight:'1%',
+    marginLeft: '52%',
+  },
 });
 export default stylem;
