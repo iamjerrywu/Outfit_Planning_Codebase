@@ -8,6 +8,7 @@ import Tabs from './navigation/tabs';
 import Homepage from './components/Home';
 import Home2_pickaday from './components/Home/home2_pickaday';
 
+
 {/*const Stack = createStackNavigator(screens);*/}
 export default function App(){
     return (

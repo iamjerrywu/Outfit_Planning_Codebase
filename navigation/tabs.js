@@ -5,6 +5,7 @@ import Calendar from '../components/Calendar';
 import Create from '../components/Create';
 import Profile from '../components/Profile';
 import Wardrobe from '../components/Wardrobe';
+import Tops from '../components/Wardrobe/tops';
 const Tab =createBottomTabNavigator();
 
 const Tabs=()=>{
