@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import {View, Text,Image,TouchableOpacity} from 'react-native';
+import { StackActions, NavigationActions } from 'react-navigation';
 import Styledbutton from '../StyledButton';
 import stylem from './stylem';
-import home2_pickaday from './home2_pickaday';
 const Homepage=({navigation})=>{
     const username='Akshara';
     const worn=10;
     const total=40;
     const stat = (worn /total) *100 +'%';
+
+const resetAction = StackActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'Homepage' })],
+});
+navigation.dispatch(resetAction);
     return(
         <View style={stylem.container}>
         <View>
@@ -17,7 +23,7 @@ const Homepage=({navigation})=>{
             <Image source={require('../../assets/images/Group.jpg')} />
             <Text style={stylem.title2}>Digitize your closet</Text>
             <View style={stylem.button}>
-            <Styledbutton type="Style it seems" content="STYLE ME!" onPress={()=>{console.warn("Button has been pressed")}}/>
+            <Styledbutton type="Style it seems" content="STYLE ME!" onPress={()=>navigation.navigate('Home2_pickaday')}/>
             </View>
         </View>
         <View style={stylem.box2}>
@@ -43,7 +49,7 @@ const Homepage=({navigation})=>{
         <View style={stylem.box5}>
             <Image source={require('../../assets/images/group1.png')} style={stylem.image2} />
             <Text style={stylem.title4}>Today's Outfit</Text>
-            <TouchableOpacity style={stylem.btn} onPress={()=>navigation.navigate('home2_pickaday')}>
+            <TouchableOpacity style={stylem.btn} onPress={()=>navigation.navigate('Home2_pickaday')}>
                 <Image source={require('../../assets/icons/arrow.png')}/>
             </TouchableOpacity>
         </View>

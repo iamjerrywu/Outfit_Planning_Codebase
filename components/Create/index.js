@@ -1,8 +1,7 @@
 import React, { Component,useEffect,useState } from 'react';
 import {View, Text,StyleSheet,Button, TouchableOpacity} from 'react-native';
 import {Camera} from 'expo-camera';
-import {ImagePicker} from 'react-native-image-picker';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+
 const Create=({navigation})=>{
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
