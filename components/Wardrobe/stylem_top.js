@@ -24,7 +24,7 @@ const stylem = StyleSheet.create({
     height: 130,
     left: 12, right:20,
     position:'absolute',
-  
+    backgroundColor:'#fcf9f6',
     borderRadius: 5,
     marginTop: '30%',marginLeft:'2%'
   },
