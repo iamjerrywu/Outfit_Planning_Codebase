@@ -25,27 +25,27 @@ const Tops=({navigation})=>{
         />
     </View>
     <View style={stylem_top.box2}>
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>console.warn("Top 1 was pressed")}>
+    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
       <Image source={require('../../assets/images/top_1.png')} style={stylem_top.image1} />
     </TouchableOpacity>
     
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>console.warn("Top 2 was pressed")}>
+    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
       <Image source={require('../../assets/images/top_2.png')} style={stylem_top.image2} />
     </TouchableOpacity>
     
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>console.warn("Top 3 was pressed")}>
+    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
       <Image source={require('../../assets/images/top_3.png')} style={stylem_top.image3} />
     </TouchableOpacity>
     
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>console.warn("Top 4 was pressed")}>
+    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
       <Image source={require('../../assets/images/top_4.png')} style={stylem_top.image4} />
     </TouchableOpacity>
     
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>console.warn("Top 5 was pressed")}>
+    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
       <Image source={require('../../assets/images/top_5.png')} style={stylem_top.image5} />
     </TouchableOpacity>
     
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>console.warn("Top 6 was pressed")}>
+    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
       <Image source={require('../../assets/images/top_6.png')} style={stylem_top.image6} />
     </TouchableOpacity>
     </View>

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     padding: 45
   },
   button: {
-    position: 'relative',
+    position: 'absolute',
     width: '150%',
     marginHorizontal:'15%',
     backgroundColor: '#5C514D',
@@ -18,17 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    fontFamily: 'AbrilFatface-Regular',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 20,
-    lineHeight: 62,
-    textAlign: 'center',
-    color: '#EBE9E7',
-    textTransform: 'uppercase',
-    
-  },
+  
   
 });
 

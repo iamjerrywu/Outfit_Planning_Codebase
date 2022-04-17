@@ -2,53 +2,64 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     clothContainer: {
       position: 'relative',
-      width: '100%',
+      width: '98%',
       height: '100%',
       
       backgroundColor: '#f3f0ec'
 
   },
   buttonsContainer:{ 
-    marginTop:'147%',
+    marginTop:'40%',
     marginBottom:'20%'
+  },
+  text_til: {
+    fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: 15,
+    lineHeight: 62,
+    color: '#5C514F',
+    marginLeft:'4%',marginBottom: '-5%'
   },
   titles: {
     position: 'absolute',
     textAlign: 'center',
+    marginLeft:'3%'
   },
-  title1: {
-    fontFamily: 'Fredoka',
-    fontStyle: 'normal',
-    fontWeight: '700',
-    fontSize: 30,
-    lineHeight: 62,
-    textAlign: 'center',
-    color: '#000000',
-    marginTop: '15%'
+  entry_container: {
+    marginTop:'48%',
+    alignContent:'center',
+    justifyContent:'center',
+    marginLeft:'5%'
   },
-  title2: {
-    marginTop: '20%',
-    marginLeft: '3%',
-    marginRight:'30%',
-    fontFamily: 'AbrilFatface-Regular',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 35,
-    lineHeight: 62,
-    color: '#5C514D',
-},
-  title3: {
-    fontFamily: 'AbrilFatface-Regular',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    textAlign:'right',
-    fontSize: 35,
-    lineHeight: 62,
-    color: '#5C514D',
-    marginTop: '10%',
-    marginRight:'3%',
-    marginLeft: '30%'
+  email_input: {
+    width: 280,
+    height: 50,
+    backgroundColor: '#ffff',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 25, 
+    fontSize: 16,
+    shadowColor: 'grey',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+  },
+  pass_input: {
+    width: 280,
+    height: 50,
+    backgroundColor: '#ffff',
+    borderColor: '#ccc',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderRadius: 25, 
+    fontSize: 16,
+    shadowColor: 'grey',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   }
-
 });
 export default styles;

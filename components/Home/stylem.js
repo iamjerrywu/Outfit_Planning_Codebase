@@ -43,9 +43,9 @@ const stylem = StyleSheet.create({
   },
   button: {
     position:'absolute',
-    marginTop: '5%',
-    marginLeft: '10%',
-    width: '60%',
+    marginTop: '22%',
+    marginLeft: '26%',
+    width: '75%',
   },
   box2:{
     width: 280,

@@ -6,103 +6,70 @@ import Create from '../components/Create';
 import Profile from '../components/Profile';
 import Wardrobe from '../components/Wardrobe';
 import Tops from '../components/Wardrobe/tops';
-const Tab =createBottomTabNavigator();
+import Accessories from '../components/Wardrobe/accessories';
+import Bottomwear from '../components/Wardrobe/bottomwear';
+import Dresses from '../components/Wardrobe/dresses';
+import Footwear from '../components/Wardrobe/footwear';
+import Jackets from '../components/Wardrobe/jackets';
+import Home2_pickaday from '../components/Home/home2_pickaday';
+import {createStackNavigator} from "@react-navigation/stack";
+const Stack =createStackNavigator(); 
 
-const Tabs=()=>{
+const Tabs1=()=>{
     return (
-    <Tab.Navigator screenOptions={{headerShown: false, showLabel: false, style: {
-        position: 'absolute',
-        width: 391,
-        height: 75,
-        left: 0,
-        top: 769,
-        backgroundColor: '#F3F0EC',
-        ...styles.shadow
-    }}}>
-        <Tab.Screen name="HOME" component={Homepage} options={{
-            tabBarIcon: ({focused})=> (
-                <View style={{
-                    alignItems: 'center', justifyContent: 'center',
-                    top: 10}}>
-                    <Image source={require('../assets/icons/home.png')} 
-                    resizeMode='contain' 
-                    style={{
-                        width: 25,
-                        height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
-                    }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>HOME</Text>
-                </View>
-            )
-        }}/>
-        <Tab.Screen name="WARDROBE" component={Wardrobe} options={{
-            tabBarIcon: ({focused})=> (
-                <View style={{
-                    alignItems: 'center', justifyContent: 'center',
-                    top: 10}}>
-                    <Image source={require('../assets/icons/wardrobe.png')} 
-                    resizeMode='contain' 
-                    style={{
-                        width: 25,
-                        height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
-                    }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>WARDROBE</Text>
-                </View>
-            )
-        }}/>
-        <Tab.Screen name="CREATE" component={Create} options={{
-            tabBarIcon: ({focused})=> (
-                <View style={{
-                    alignItems: 'center', justifyContent: 'center',
-                    top: 10}}>
-                    <Image source={require('../assets/icons/create.png')} 
-                    resizeMode='contain' 
-                    style={{
-                        width: 25,
-                        height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
-                    }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>CREATE</Text>
-                </View>
-            )
-        }}/>
-        <Tab.Screen name="CALENDAR" component={Calendar} options={{
-            tabBarIcon: ({focused})=> (
-                <View style={{
-                    alignItems: 'center', justifyContent: 'center',
-                    top: 10}}>
-                    <Image source={require('../assets/icons/calendar.png')} 
-                    resizeMode='contain' 
-                    style={{
-                        width: 25,
-                        height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
-                    }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>CALENDAR</Text>
-                </View>
-            )
-        }}/>
-        <Tab.Screen name="PROFILE" component={Profile} options={{
-            tabBarIcon: ({focused})=> (
-                <View style={{
-                    alignItems: 'center', justifyContent: 'center',
-                    top: 10}}>
-                    <Image source={require('../assets/icons/profile.png')} 
-                    resizeMode='contain' 
-                    style={{
-                        width: 25,
-                        height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
-                    }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>PROFILE</Text>
-                </View>
-            )
-        }}/>
-    </Tab.Navigator>
+        <Stack.Navigator initialRouteName='Homepage'>
+        <Stack.Screen name="Homepage" component={Homepage} options={{ headerShown: false }}/>
+            <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
+          </Stack.Navigator>
+          
     );
 }
-export default Tabs;
+export {Tabs1};
+const Tabs2=()=>{
+    return (
+        <Stack.Navigator >
+            <Stack.Screen name="Wardrobe" component={Wardrobe} options={{ headerShown: false }}/>
+            <Stack.Screen name="Tops" component={Tops} options={{ headerShown: false }}/>
+            <Stack.Screen name="Bottomwear" component={Bottomwear} options={{ headerShown: false }}/>
+            <Stack.Screen name="Footwear" component={Footwear} options={{ headerShown: false }}/>
+            <Stack.Screen name="Dresses" component={Dresses} options={{ headerShown: false }}/>
+            <Stack.Screen name="Jackets" component={Jackets} options={{ headerShown: false }}/>
+            <Stack.Screen name="Accessories" component={Accessories} options={{ headerShown: false }}/>
+        </Stack.Navigator>
+          
+    );
+}
+export {Tabs2};
+const Tabs3=()=>{
+    return (
+        <Stack.Navigator >
+        <Stack.Screen name="Create" component={Create} options={{ headerShown: false }}/>
+            <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
+          </Stack.Navigator>
+          
+    );
+}
+export {Tabs3};
+const Tabs4=()=>{
+    return (
+        <Stack.Navigator >
+        <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false }}/>
+            <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
+          </Stack.Navigator>
+          
+    );
+}
+export {Tabs4};
+const Tabs5=()=>{
+    return (
+        <Stack.Navigator >
+        <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
+            <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
+          </Stack.Navigator>
+          
+    );
+}
+export {Tabs5};
 const styles= StyleSheet.create(
     {
         shadow: {

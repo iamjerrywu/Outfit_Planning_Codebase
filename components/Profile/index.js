@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {View, Text,StyleSheet,Button} from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 const Profile=({navigation})=>{
-  return(
+  
+return(
     <View style={styles.container}>
         <Text>Profile</Text>
-        <Button title='Click here' onPress={() =>alert('Button clicked!')}/>
+        <Button title='Click here' onPress={alert("hi")}/>
       </View>
     );
 };
