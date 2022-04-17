@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {View, Text,Image,TouchableOpacity} from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import Styledbutton from '../StyledButton';
+import { auth } from '../firebase/config';
 import stylem from './stylem';
 const Homepage=({navigation})=>{
-    const username='Akshara';
+    const username=auth.currentUser?.email;
     const worn=10;
     const total=40;
     const stat = (worn /total) *100 +'%';

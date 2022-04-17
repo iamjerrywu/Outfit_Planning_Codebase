@@ -17,7 +17,7 @@ const Stack =createStackNavigator();
 
 const Tabs1=()=>{
     return (
-        <Stack.Navigator >
+        <Stack.Navigator initialRouteName='Homepage'>
         <Stack.Screen name="Homepage" component={Homepage} options={{ headerShown: false }}/>
             <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
           </Stack.Navigator>
