@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import {View, Text,StyleSheet,Button,Image,TouchableOpacity, FlatList} from 'react-native';
 import stylem from './stylem';
 import Styledbutton from '../StyledButton';
+import { collection, query, where, getDocs } from "firebase/firestore";
+import {firebase,auth} from '../firebase/config.js';
+
+
 const Wardrobe=({navigation})=>{
+  
   return(
     <View style={stylem.container}>
     <View>

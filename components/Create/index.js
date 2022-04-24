@@ -1,14 +1,16 @@
-import React, { Component,useEffect,useState, useRef } from 'react';
+import React, { Component,useEffect,useState, useCallback } from 'react';
 import {Camera} from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import {firebase,auth} from '../firebase/config.js';
+import { StackActions, NavigationActions } from 'react-navigation';
+import DropDownPicker from 'react-native-dropdown-picker';
 import {
   View,
   Text,
   Platform, Button,
   StyleSheet,Image,
-  Alert,
-  ActivityIndicator,
+  Alert,ScrollView,
+  ActivityIndicator,FlatList
 } from 'react-native';
 import { borderBottomColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
@@ -21,7 +23,38 @@ const Create=({navigation})=>{
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
-  const [post, setPost] = useState(null);
+  const [opencat, setOpencat] = useState(false);
+  const [openstl, setOpenstl] = useState(false);
+  const [openwo, setOpenwo] = useState(false);
+  const onCatOpen = useCallback(() => {
+    setOpenstl(false);setOpenwo(false);
+  }, []);
+
+  const onStlOpen = useCallback(() => {
+    setOpencat(false);setOpenwo(false);
+  }, []);
+
+  const onWoOpen = useCallback(() => {
+    setOpencat(false);setOpenstl(false);
+  }, []);
+  const [valuecat, setValuecat] = useState(null);
+  const [valuestl, setValuestl] = useState(null);
+  const [valuewo, setValuewo] = useState(null);
+  const[cat,setCat]=useState([{label:'Top',value:'Top'},
+  {label:'Bottomwear',value:'Bottomwear'},
+  {label:'Dress',value:'Dress'},
+  {label:'Jacket',value:'Jacket'},
+  {label:'Footwear',value:'Footwear'},
+  {label:'Accessories',value:'Accessories'}
+  ]);
+  const[stl,setStl]=useState([{label:'Casual',value:'Casual'},
+  {label:'Cocktail',value:'Cocktail'},
+  {label:'Business',value:'Business'},
+  {label:'Fancy',value:'Fancy'},
+  {label:'Running Errands',value:'Running Errands'}
+]);
+const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
+  {label:'Not Worn',value:'Not Worn'}])
 
   useEffect(()=>{
     (async() => {
@@ -32,11 +65,11 @@ const Create=({navigation})=>{
       setHasGalleryPermission(galleryStatus.status === 'granted');
     })();
   },[]);
-
+  
   
   const takePicture = async () => {
     if(camera){
-      const result= await camera.takePictureAsync(null);
+      const result= await ImagePicker.launchCameraAsync();
       setImage(result.uri);
     }
   }
@@ -63,7 +96,7 @@ const Create=({navigation})=>{
   if(hasCameraPermission === null || hasGalleryPermission === false){
     return <View />
   }
-  const uploadImage = async (url) => {
+  const uploadImage = async () => {
     const blob = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.onload = function() {
@@ -93,45 +126,71 @@ const Create=({navigation})=>{
       snapshot.snapshot.ref.getDownloadURL().then((url)=>{
         setUploading(false)
         console.log("download url: ",url)
+        const currentUser=auth.currentUser;
+        firebase.firestore().collection('Pictures')
+    .add({
+      userId: currentUser.uid,
+      postImg: url,
+      postTime: firebase.firestore.Timestamp.fromDate(new Date()),
+      category: valuecat,
+      occasion: valuestl,
+      worn_st: valuewo
+    })
         blob.close()
         return url;
       });
     })
   }
-  /*submit is still not working. This function puts together the user id with photos*/
-  const submit = async () => {
-    const imageUrl = await uploadImage();
-    console.log('Image Url: ', imageUrl);
-    const currentUser=auth.currentUser;
-    firebase.firestore().collection('Pictures')
-    .add({
-      userId: currentUser.uid,
-      postImg: imageUrl,
-      postTime: firebase.firestore.Timestamp.fromDate(new Date()),
-      type: 'Pant'
-    })
-    .then(() => {
-      console.log('Picture Added!');
-      Alert.alert(
-        'Picture published!',
-        'Your post has been published successfully!',
-      );
-      setPost(null);
-    })
-    .catch((error) => {
-      console.log('Something went wrong with added post to firestore.', error);
-    });
-  }
   return(
     <View style={stylem.container}>
       
-      <View style={stylem.camcontainer}>
       
-        <Button title='Take Picture' onPress={() => takePicture()}/>
+      <View style={stylem.camcontainer}>
+      <Text>Choose Category</Text>
+        <DropDownPicker
+      open={opencat}
+      onOpen={onCatOpen}
+      value={valuecat}
+      items={cat}
+      setOpen={setOpencat}
+      setValue={setValuecat}
+      setItems={setCat}
+      zIndex={3000}
+    zIndexInverse={1000}
+    />
+      <Text>Choose Occasion</Text>
+        <DropDownPicker
+      open={openstl}
+      onOpen={onStlOpen}
+      value={valuestl}
+      items={stl}
+      setOpen={setOpenstl}
+      setValue={setValuestl}
+      setItems={setStl}
+      zIndex={2000}
+    zIndexInverse={2000}
+    />
+    <Text>Choose Worn Status</Text>
+    <DropDownPicker
+      open={openwo}
+      onOpen={onWoOpen}
+      value={valuewo}
+      items={worn}
+      setOpen={setOpenwo}
+      setValue={setValuewo}
+      setItems={setWorn}
+      zIndex={1000}
+    zIndexInverse={3000}
+    />
+        <ScrollView>
         <Button title='Choose Photo' onPress={() => pickImage()}/>
+        <Button title='Take Picture' onPress={() => takePicture()}/>
+        <Camera ref={ref => setCamera(ref)}/>
         {image && <Image source={{uri:image}} style={{width:300, height:300, marginLeft:'3%'}}/>}
-        {!uploading?<Button title='Upload Photo' onPress={()=> submit()}/>: <ActivityIndicator size="large" color="#000"/>}
+        {!uploading?<Button title='Upload Photo' onPress={()=> uploadImage()}/>: <ActivityIndicator size="large" color="#000"/>}
+        </ScrollView>
         </View>
+
         
     </View>
     );
@@ -149,7 +208,8 @@ const stylem = StyleSheet.create({
     flex: 1,
     backgroundColor:'#fcf9f6',
     alignContent:'center',
-    justifyContent:'center'
+    justifyContent:'center',
+    marginTop:'15%'
   },
   fxr: {
     flex: 1,
@@ -168,6 +228,13 @@ const stylem = StyleSheet.create({
       marginTop:'5%',
       marginRight:'3%',
       marginLeft: '30%',
-  }
-  
+  },
+  cameraContainer: {
+    flex: 1,
+    flexDirection: 'row'
+},
+fixedRatio:{
+    flex: 1,
+    aspectRatio: 1
+}
 });
