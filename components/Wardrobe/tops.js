@@ -2,17 +2,18 @@ import React, { Component,useState,useEffect} from 'react';
 import {View, Text,StyleSheet,Button,Image,TouchableOpacity, ScrollView} from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown-v2';
 import stylem_top from './stylem_top';
-import {firebase,auth} from '../firebase/config.js';
-import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import {firebase,auth,db} from '../firebase/config.js';
 import { FlatList } from 'react-native-gesture-handler';
 import {top_data} from './product_item';
 const Tops=({navigation})=>{
   
-  
+
     return(
     <View style={stylem_top.container}>
     <View>
-    <TouchableOpacity style={stylem_top.cat1} onPress={()=>navigation.navigate('Wardrobe')}>
+    <TouchableOpacity style={{
+    position: 'relative',
+  }} onPress={()=>navigation.navigate('Wardrobe')}>
     <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'12%',marginLeft:'4%'}} />
     <Text style={stylem_top.title1}>Tops</Text>
     </TouchableOpacity>

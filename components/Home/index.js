@@ -10,11 +10,7 @@ const Homepage=({navigation})=>{
     const total=40;
     const stat = (worn /total) *100 +'%';
 
-const resetAction = StackActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'Homepage' })],
-});
-navigation.dispatch(resetAction);
+
     return(
         <View style={stylem.container}>
         <View>

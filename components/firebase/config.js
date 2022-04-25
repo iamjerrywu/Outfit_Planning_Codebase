@@ -1,7 +1,9 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 import 'firebase/auth';
-import 'firebase/firestore';
 import 'firebase/storage';
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,7 +19,9 @@ const firebaseConfig = {
   measurementId: "G-1PW3B12F17"
 };
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-} 
+firebase.initializeApp(firebaseConfig)
+}
 const auth=firebase.auth();
-export {firebase,auth};
+const db=firebase.firestore();
+
+export {firebase,auth,db};
