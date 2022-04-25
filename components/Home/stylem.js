@@ -13,7 +13,7 @@ const stylem = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: '600',
     textAlign:'left',
-    fontSize: 20,
+    fontSize: 16,
     lineHeight: 58,
     color: '#5C514D',
     marginTop: '12%',

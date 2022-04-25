@@ -18,6 +18,7 @@ import Business from '../components/Home/business';
 import Fancy from '../components/Home/fancy';
 import Running_errands from '../components/Home/running_errands';
 import {createStackNavigator} from "@react-navigation/stack";
+import Add_cat from '../components/Wardrobe/add_category';
 const Stack =createStackNavigator(); 
 
 const Tabs1=()=>{
@@ -45,6 +46,8 @@ const Tabs2=()=>{
             <Stack.Screen name="Dresses" component={Dresses} options={{ headerShown: false }}/>
             <Stack.Screen name="Jackets" component={Jackets} options={{ headerShown: false }}/>
             <Stack.Screen name="Accessories" component={Accessories} options={{ headerShown: false }}/>
+            <Stack.Screen name="Add_cat" component={Add_cat} options={{ headerShown: false }}/>
+
         </Stack.Navigator>
           
     );

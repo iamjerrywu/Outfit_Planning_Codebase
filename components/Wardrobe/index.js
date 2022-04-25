@@ -16,6 +16,11 @@ const Wardrobe=({navigation})=>{
     </View>
     <View style={stylem.box1}>
         <Text style={stylem.title2}>By Category</Text>
+        <TouchableOpacity style={{
+    position: 'absolute',
+  }} onPress={()=>navigation.navigate('Add_cat')}>
+    <Image source={require('../../assets/icons/add.jpeg')} style={{width:25,height:25,marginTop:'9%',marginLeft:'88%'}} />
+    </TouchableOpacity>
     </View>
     <View style={stylem.box2}>
     <TouchableOpacity style={stylem.cat1} onPress={()=>navigation.navigate('Tops')}>
