@@ -50,7 +50,6 @@ const Add_cat=({navigation})=>{
   const[stl,setStl]=useState([{label:'Casual',value:'Casual'},
   {label:'Cocktail',value:'Cocktail'},
   {label:'Business',value:'Business'},
-  {label:'Fancy',value:'Fancy'},
   {label:'Running Errands',value:'Running Errands'}
 ]);
 const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},

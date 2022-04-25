@@ -15,7 +15,6 @@ import Home2_pickaday from '../components/Home/home2_pickaday';
 import Casual from '../components/Home/casual';
 import Cocktail from '../components/Home/cocktail';
 import Business from '../components/Home/business';
-import Fancy from '../components/Home/fancy';
 import Sporty from '../components/Home/sporty';
 import {createStackNavigator} from "@react-navigation/stack";
 import Add_cat from '../components/Wardrobe/add_category';
@@ -28,7 +27,6 @@ const Tabs1=()=>{
             <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
             <Stack.Screen name="Casual" component={Casual} options={{ headerShown: false }}/>
             <Stack.Screen name="Cocktail" component={Cocktail} options={{ headerShown: false }}/>
-            <Stack.Screen name="Fancy" component={Fancy} options={{ headerShown: false }}/>
             <Stack.Screen name="Business" component={Business} options={{ headerShown: false }}/>
             <Stack.Screen name="Sporty" component={Sporty} options={{ headerShown: false }}/>
           </Stack.Navigator>

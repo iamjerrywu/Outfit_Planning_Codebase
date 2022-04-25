@@ -165,4 +165,64 @@ const top_data=[
           image:require('../../assets/accessories/accessories_7_ca_sp.png')
         }
       ];
-export {top_data,bottomwear_data,dress_data,jacket_data,footwear_data,accessories_data};
+      const casual_data=[
+        {
+          id:1,
+          image:require('../../assets/casual/casual_1.png')
+        },
+        {
+          id:2,
+          image:require('../../assets/casual/casual_2.png')
+        },
+        {
+          id:3,
+          image:require('../../assets/casual/casual_3.png')
+        },
+        {
+          id:4,
+          image:require('../../assets/casual/casual_4.png')
+        },
+        {
+          id:5,
+          image:require('../../assets/casual/casual_5.png')
+        }
+      ];
+      const cocktail_data=[
+        {
+          id:1,
+          image:require('../../assets/cocktail/cocktail_1.png')
+        },
+        {
+          id:2,
+          image:require('../../assets/cocktail/cocktail_2.png')
+        },
+        {
+          id:3,
+          image:require('../../assets/cocktail/cocktail_3.png')
+        }
+      ];
+      const business_data=[
+        {
+          id:1,
+          image:require('../../assets/business/business_1.png')
+        },
+        {
+          id:2,
+          image:require('../../assets/business/business_2.png')
+        }
+      ];
+      const sporty_data=[
+        {
+          id:1,
+          image:require('../../assets/sporty/sporty_1.png')
+        },
+        {
+          id:2,
+          image:require('../../assets/sporty/sporty_2.png')
+        },
+        {
+          id:3,
+          image:require('../../assets/sporty/sporty_3.png')
+        }
+      ];
+export {top_data,bottomwear_data,dress_data,jacket_data,footwear_data,accessories_data, casual_data, cocktail_data, business_data, sporty_data};
