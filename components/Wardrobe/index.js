@@ -3,7 +3,8 @@ import {View, Text,StyleSheet,Button,Image,TouchableOpacity, FlatList} from 'rea
 import stylem from './stylem';
 import Styledbutton from '../StyledButton';
 import { collection, query, where, getDocs } from "firebase/firestore";
-import {firebase,auth} from '../firebase/config.js';
+import {firebase,auth,db} from '../firebase/config.js';
+const currentUser=auth.currentUser;
 
 
 const Wardrobe=({navigation})=>{

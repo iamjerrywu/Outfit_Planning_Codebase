@@ -1,7 +1,7 @@
 import React, { Component,useEffect,useState, useCallback } from 'react';
 import {Camera} from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
-import {firebase,auth} from '../firebase/config.js';
+import {firebase,auth,db} from '../firebase/config.js';
 import { StackActions, NavigationActions } from 'react-navigation';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {
@@ -127,7 +127,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
         setUploading(false)
         console.log("download url: ",url)
         const currentUser=auth.currentUser;
-        firebase.firestore().collection('Pictures')
+        db.collection('Pictures')
     .add({
       userId: currentUser.uid,
       postImg: url,
