@@ -84,18 +84,25 @@ const stylem = StyleSheet.create({
     position:'absolute',
     fontStyle: 'normal',
     fontWeight: '600',
-    textAlign:'right',
+    textAlign:'center',
     fontSize: 18,
     lineHeight: 28,
     color: '#5C514D',
     marginTop: '1%',
     marginRight:'1%',
-    marginLeft: '2%',
+    marginLeft: '1%',
   },
   box3:{
-    backgroundColor: '#f3f0ec',
     position:'relative',
-    width: 300, height: 220, marginLeft:'3%'
+    width: 300, height: 220, marginLeft:'3%',
+  },
+  box3_1:{
+    position:'relative',
+    width: 300, height: 190, marginTop:'11%',
+  },
+  box4:{
+    backgroundColor: '#DBCFC5',
+    width: 300, height: 100,marginTop:'15%',borderRadius:25
   },
   image7: {
     position:'absolute',
@@ -111,13 +118,13 @@ const stylem = StyleSheet.create({
     position:'absolute',
     fontStyle: 'normal',
     fontWeight: '600',
-    textAlign:'right',
+    textAlign:'center',
     fontSize: 16,
     lineHeight: 28,
     color: '#5C514D',
-    marginTop: '65%',
+    marginTop: '10%',
     marginRight:'1%',
-    marginLeft: '2%',
+    marginLeft: '29%'
   },
   ouft2: {
     position:'absolute',
@@ -127,7 +134,7 @@ const stylem = StyleSheet.create({
     fontSize: 16,
     lineHeight: 28,
     color: '#5C514D',
-    marginTop: '65%',
+    marginTop: '40%',
     marginRight:'1%',
     marginLeft: '52%',
   },

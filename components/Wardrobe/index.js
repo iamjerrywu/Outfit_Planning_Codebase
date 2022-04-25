@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import {View, Text,StyleSheet,Button,Image,TouchableOpacity, FlatList} from 'react-native';
 import stylem from './stylem';
 import Styledbutton from '../StyledButton';
@@ -8,7 +8,11 @@ const currentUser=auth.currentUser;
 
 
 const Wardrobe=({navigation})=>{
-  
+  const occasion=[{id:'Casual',value:'Casual'},
+    {id:'Cocktail',value:'Cocktail'},
+    {id:'Business',value:'Business'},
+    {id:'Sporty',value:'Sporty'}
+  ];
   return(
     <View style={stylem.container}>
     <View>
@@ -49,14 +53,18 @@ const Wardrobe=({navigation})=>{
     </View>
     <View style={stylem.box3}>
       <Text style={stylem.title3}>Saved Outfits</Text>
-      <TouchableOpacity style={stylem.cat1} onPress={()=>console.warn('Running Errands ...')}>
-        <Image source={require('../../assets/images/group1.png')} style={stylem.image7} />
-        <Text style={stylem.ouft1}> Running Errands</Text>
-      </TouchableOpacity>
-            <TouchableOpacity style={stylem.cat1} onPress={()=>console.warn('Cocktail Party ...')}>
-                <Image source={require('../../assets/images/group2.png')} style={stylem.image8}/>
-                <Text style={stylem.ouft2}> Cocktail Party</Text>
-            </TouchableOpacity>
+      <View style={stylem.box3_1}>
+      <FlatList data={occasion} renderItem={({item})=> 
+      <TouchableOpacity style={stylem.cat1} onPress={()=>navigation.navigate(item.value)}>
+      <View style={stylem.box4}><Text style={stylem.ouft1}> {item.value}</Text></View>
+    </TouchableOpacity>} keyExtractor={({id})=>id} style={{
+        flex:1,
+        position:'relative',
+        
+        width: '100%', height: '100%',marginTop:'%'
+        
+      }}/>
+           </View> 
         </View>
   </View>
 );
