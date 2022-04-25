@@ -12,7 +12,13 @@ import Dresses from '../components/Wardrobe/dresses';
 import Footwear from '../components/Wardrobe/footwear';
 import Jackets from '../components/Wardrobe/jackets';
 import Home2_pickaday from '../components/Home/home2_pickaday';
+import Casual from '../components/Home/casual';
+import Cocktail from '../components/Home/cocktail';
+import Business from '../components/Home/business';
+import Fancy from '../components/Home/fancy';
+import Running_errands from '../components/Home/running_errands';
 import {createStackNavigator} from "@react-navigation/stack";
+import Add_cat from '../components/Wardrobe/add_category';
 const Stack =createStackNavigator(); 
 
 const Tabs1=()=>{
@@ -20,6 +26,11 @@ const Tabs1=()=>{
         <Stack.Navigator initialRouteName='Homepage'>
         <Stack.Screen name="Homepage" component={Homepage} options={{ headerShown: false }}/>
             <Stack.Screen name="Home2_pickaday" component={Home2_pickaday} options={{ headerShown: false }}/>
+            <Stack.Screen name="Casual" component={Casual} options={{ headerShown: false }}/>
+            <Stack.Screen name="Cocktail" component={Cocktail} options={{ headerShown: false }}/>
+            <Stack.Screen name="Fancy" component={Fancy} options={{ headerShown: false }}/>
+            <Stack.Screen name="Business" component={Business} options={{ headerShown: false }}/>
+            <Stack.Screen name="Running Errands" component={Running_errands} options={{ headerShown: false }}/>
           </Stack.Navigator>
           
     );
@@ -35,6 +46,8 @@ const Tabs2=()=>{
             <Stack.Screen name="Dresses" component={Dresses} options={{ headerShown: false }}/>
             <Stack.Screen name="Jackets" component={Jackets} options={{ headerShown: false }}/>
             <Stack.Screen name="Accessories" component={Accessories} options={{ headerShown: false }}/>
+            <Stack.Screen name="Add_cat" component={Add_cat} options={{ headerShown: false }}/>
+
         </Stack.Navigator>
           
     );

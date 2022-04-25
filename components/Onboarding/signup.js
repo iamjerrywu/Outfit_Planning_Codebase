@@ -4,12 +4,26 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import Styledbutton from '../StyledButton/index.js';
 import {firebase,auth} from '../firebase/config.js';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import Error from './Error.js';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Signup({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [waist, setWaist] = useState('');
+  const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const[gender, setGender]=useState([{label:'Male',value:'Male'},
+    {label:'Female',value:'Female'},
+    {label:'Others',value:'Others'},
+    {label:'Prefer Not to Say',value:'Prefer Not to Say'}
+  ]);
+  const [prefStyle, setprefStyle] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
   const [signupError, setSignupError] = useState('');
@@ -39,7 +53,7 @@ export default function Signup({ navigation }) {
 
   return (
     <View style={styles.clothContainer}>
-      
+      <ScrollView>
       <Text style={{marginTop: '25%',
     marginLeft: '3%',
     marginRight:'2%',
@@ -72,16 +86,74 @@ export default function Signup({ navigation }) {
         onChangeText={text => setPassword(text)}
         handlePasswordVisibility={handlePasswordVisibility}
       />
+      <Text style={styles.text_til}>NAME</Text>
+      <TextInput
+        style={styles.pass_input} placeholder='Enter name'
+        autoCapitalize='none'
+        autoCorrect={false}
+        textContentType='name'
+        rightIcon={rightIcon}
+        value={name}
+        onChangeText={text => setName(text)}
+      />
+      <Text style={styles.text_til}>HEIGHT (in cms)</Text>
+      <TextInput
+        style={styles.pass_input} placeholder='Enter Height'
+        autoCapitalize='none'
+        autoCorrect={false}
+        keyboardType='numeric'
+        textContentType='height'
+        rightIcon={rightIcon}
+        value={height}
+        onChangeText={text => setHeight(text)}
+      />
+      <Text style={styles.text_til}>WEIGHT (in lbs)</Text>
+      <TextInput
+        style={styles.pass_input} placeholder='Enter Weight'
+        autoCapitalize='none'
+        autoCorrect={false}
+        keyboardType='numeric'
+        textContentType='weight'
+        rightIcon={rightIcon}
+        value={weight}
+        onChangeText={text => setWeight(text)}
+      />
+      <Text style={styles.text_til}>WAIST (in inches)</Text>
+      <TextInput
+        style={styles.pass_input} placeholder='Enter Waist'
+        autoCapitalize='none'
+        autoCorrect={false}
+        keyboardType='numeric'
+        textContentType='waist'
+        rightIcon={rightIcon}
+        value={waist}
+        onChangeText={text => setWaist(text)}
+      />
+      <View style={styles.box2}>
+      <Text style={styles.text_til}>GENDER</Text>
+        <DropDownPicker
+      open={open}
+      value={value}
+      items={gender}
+      setOpen={setOpen}
+      setValue={setValue}
+      setItems={setGender}
+      
+    />
+        </View>
       </View>
       {signupError ? <Error error={signupError} visible={true} /> : null}
       <View style={styles.b_container}>
       <Styledbutton type="Submit" content="SUBMIT" onPress={onHandleSignup}/>
+      
       </View>
-      <Button
+      <Button style={styles.button}
         onPress={() => navigation.navigate('Main')}
         title='Go to Login'
-        color='#fff'
+        color='#000'
       />
+      </ScrollView>
+      
     </View>
   );
 }
@@ -96,7 +168,7 @@ const styles = StyleSheet.create({
   },
   b_container:{ 
     marginTop:'80%',
-    marginBottom:'20%',
+    marginBottom:'5%',
     width:'65%',
     marginLeft:'48%'
   },
@@ -148,5 +220,8 @@ const styles = StyleSheet.create({
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 2,
+  },
+  button:{
+    marginTop:'-20%'
   }
 });
