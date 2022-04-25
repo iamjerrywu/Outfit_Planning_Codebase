@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
-import {View, Text,StyleSheet,Button} from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import React, { Component,useEffect,useState, useCallback } from 'react';
+import {Camera} from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+import {firebase,auth,db} from '../firebase/config.js';
+import { StackActions, NavigationActions } from 'react-navigation';
+import DropDownPicker from 'react-native-dropdown-picker';
+import {
+  View,
+  Text,
+  Platform, Button,
+  StyleSheet,Image,
+  Alert,ScrollView,
+  ActivityIndicator,TouchableOpacity
+} from 'react-native';
 const Profile=({navigation})=>{
-  
+
+      
 return(
     <View style={styles.container}>
         <Text>Profile</Text>
-        <Button title='Click here' onPress={alert("hi")}/>
+        <Button title='Click here' onPress={console.log("hi")}/>
       </View>
     );
 };

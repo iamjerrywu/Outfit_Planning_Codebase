@@ -4,11 +4,12 @@ import { StackActions, NavigationActions } from 'react-navigation';
 import Styledbutton from '../StyledButton';
 import { auth } from '../firebase/config';
 import stylem from './stylem';
+import {top_data,bottomwear_data,dress_data,jacket_data,footwear_data,accessories_data} from '../Wardrobe/product_item';
 const Homepage=({navigation})=>{
     const username=auth.currentUser?.email;
     const worn=10;
-    const total=40;
-    const stat = (worn /total) *100 +'%';
+    const total=top_data.length + bottomwear_data.length + dress_data.length + jacket_data.length + footwear_data.length + accessories_data.length;
+    const stat = (worn /total).toFixed(2) *100 +'%';
 
 
     return(

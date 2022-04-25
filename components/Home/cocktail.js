@@ -20,7 +20,7 @@ const Cocktail=({navigation})=>{
               <View style={styles.box1}>
                   <TouchableOpacity style={{
     position: 'absolute'
-}} onPress={()=>navigation.navigate('Home2_pickaday')}>
+}} onPress={()=>navigation.navigate('Create')}>
   <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'85%',marginLeft:'6%'}} />
   </TouchableOpacity>
     

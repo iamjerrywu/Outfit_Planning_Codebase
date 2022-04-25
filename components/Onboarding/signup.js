@@ -1,15 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { useState,useEffect,useRef,useCallback } from 'react';
+import {Camera} from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+import { StyleSheet, Text, View, Button, TextInput,ScrollView,Image } from 'react-native';
 import Styledbutton from '../StyledButton/index.js';
-import {firebase,auth} from '../firebase/config.js';
+import {firebase,auth,db} from '../firebase/config.js';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 import Error from './Error.js';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Signup({ navigation }) {
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
+  const [camera, setCamera] = useState(null);
+  const [image, setImage] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  const [uploading, setUploading] = useState(false);
+  const [transferred, setTransferred] = useState(0);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -50,10 +58,99 @@ export default function Signup({ navigation }) {
       setSignupError(error.message);
     }
   };
+  useEffect(()=>{
+    (async() => {
+      const cameraStatus = await Camera.requestCameraPermissionsAsync();
+      setHasCameraPermission(cameraStatus.status === 'granted');
 
+      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      setHasGalleryPermission(galleryStatus.status === 'granted');
+    })();
+  },[]);
+  
+  
+  const takePicture = async () => {
+    if(camera){
+      const result= await ImagePicker.launchCameraAsync();
+      setImage(result.uri);
+    }
+  }
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4,3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  if(hasCameraPermission === false || hasGalleryPermission === false){
+    return <Text>No access</Text>
+  }
+  if(hasCameraPermission === null || hasGalleryPermission === false){
+    return <View />
+  }
+  const uploadData = async () => {
+    const blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        resolve(xhr.response);
+      };
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'));
+      };
+      xhr.responseType = 'blob';
+      xhr.open('GET', image, true);
+      xhr.send(null);
+    });
+
+    const ref=firebase.storage().ref().child(new Date().toISOString());
+    const snapshot=ref.put(blob);
+
+    snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,()=>{
+      setUploading(true)
+    },
+    (error) => {
+      setUploading(false)
+      console.log(error)
+      blob.close()
+      return
+    },
+    ()=>{
+      snapshot.snapshot.ref.getDownloadURL().then((url)=>{
+        setUploading(false)
+        console.log("download url: ",url)
+        const currentUser=auth.currentUser;
+        db.collection('Userdata').doc(currentUser.uid)
+    .set({
+      email: email,
+      user_prof:url,
+      postTime: firebase.firestore.Timestamp.fromDate(new Date()),
+      name: name,
+      gender: gender,
+      weight: weight,
+      height:height,
+      waist:waist
+    })
+        blob.close()
+        return url;
+      });
+    })
+  }
+  const onPress = () => {
+    onHandleSignup();uploadData();
+  };
   return (
     <View style={styles.clothContainer}>
-      <ScrollView>
+      <ScrollView style={{width:'100%'}}>
       <Text style={{marginTop: '25%',
     marginLeft: '3%',
     marginRight:'2%',
@@ -129,7 +226,7 @@ export default function Signup({ navigation }) {
         value={waist}
         onChangeText={text => setWaist(text)}
       />
-      <View style={styles.box2}>
+      <View style={{marginLeft:'-2.5%',padding:10}}>
       <Text style={styles.text_til}>GENDER</Text>
         <DropDownPicker
       open={open}
@@ -140,11 +237,23 @@ export default function Signup({ navigation }) {
       setItems={setGender}
       
     />
+     </View>
+     <Text style={{fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: 15,
+    lineHeight: 62,
+    color: '#5C514F',
+    marginLeft:'4%',marginBottom: '-5%',marginTop:'45%'}}>PROFILE PICTURE</Text>
+    <View style={{marginLeft:'-5%'}}><Button title='Choose Photo' onPress={() => pickImage()}/>
+        <Button title='Take Picture' onPress={() => takePicture()}/>
+        <Camera ref={ref => setCamera(ref)}/>
+        {image && <Image source={{uri:image}} style={{width:300, height:300, marginLeft:'3%',borderRadius:150}}/>}
         </View>
-      </View>
+        </View>
+     
       {signupError ? <Error error={signupError} visible={true} /> : null}
       <View style={styles.b_container}>
-      <Styledbutton type="Submit" content="SUBMIT" onPress={onHandleSignup}/>
+      <Styledbutton type="Submit" content="SUBMIT" onPress={onPress}/>
       
       </View>
       <Button style={styles.button}
@@ -159,15 +268,15 @@ export default function Signup({ navigation }) {
 }
 const styles = StyleSheet.create({
     clothContainer: {
-      position: 'relative',
-      width: '98%',
+      position: 'absolute',
+      width: '100%',
       height: '100%',
       
       backgroundColor: '#f3f0ec'
 
   },
   b_container:{ 
-    marginTop:'80%',
+    marginTop:'15%',
     marginBottom:'5%',
     width:'65%',
     marginLeft:'48%'

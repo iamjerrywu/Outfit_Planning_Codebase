@@ -54,9 +54,9 @@ export default function Tab_controller(){
                     style={{
                         width: 25,
                         height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
+                        tintColor: focused ? '#5c514d':'#000000',
                     }} listeners={resetHomeStackOnTabPress} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>HOME</Text>
+                    <Text style={{color: focused ? '#5c514d':'#000000', fontSize:10}}>HOME</Text>
                 </View>
             )
         }}/>
@@ -70,9 +70,9 @@ export default function Tab_controller(){
                     style={{
                         width: 25,
                         height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
+                        tintColor: focused ? '#5c514d':'#000000',
                     }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>WARDROBE</Text>
+                    <Text style={{color: focused ? '#5c514d':'#000000', fontSize:10}}>WARDROBE</Text>
                 </View>
             )
         }}/>
@@ -86,9 +86,9 @@ export default function Tab_controller(){
                     style={{
                         width: 25,
                         height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
+                        tintColor: focused ? '#5c514d':'#000000',
                     }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>CREATE</Text>
+                    <Text style={{color: focused ? '#5c514d':'#000000', fontSize:10}}>CREATE</Text>
                 </View>
             )
         }}/>
@@ -102,9 +102,9 @@ export default function Tab_controller(){
                     style={{
                         width: 25,
                         height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
+                        tintColor: focused ? '#5c514d':'#000000',
                     }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>CALENDAR</Text>
+                    <Text style={{color: focused ? '#5c514d':'#000000', fontSize:10}}>CALENDAR</Text>
                 </View>
             )
         }}/>
@@ -118,9 +118,9 @@ export default function Tab_controller(){
                     style={{
                         width: 25,
                         height: 25,
-                        tintColor: focused ? '#5c514d':'000000',
+                        tintColor: focused ? '#5c514d':'#000000',
                     }} />
-                    <Text style={{color: focused ? '#5c514d':'000000', fontSize:10}}>PROFILE</Text>
+                    <Text style={{color: focused ? '#5c514d':'#000000', fontSize:10}}>PROFILE</Text>
                 </View>
             )
         }}/>

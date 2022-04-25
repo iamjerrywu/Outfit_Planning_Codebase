@@ -10,8 +10,7 @@ const Home2_pickaday=({navigation})=>{
     const[occasion,setOccasion]=useState([{label:'Casual',value:'Casual'},
     {label:'Cocktail',value:'Cocktail'},
     {label:'Business',value:'Business'},
-    {label:'Fancy',value:'Fancy'},
-    {label:'Running Errands',value:'Running Errands'}
+    {label:'Sporty',value:'Sporty'}
   ]);
     return(
             <View style={styles.container}>
