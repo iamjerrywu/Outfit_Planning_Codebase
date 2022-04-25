@@ -10,7 +10,7 @@ import {
   Platform, Button,
   StyleSheet,Image,
   Alert,ScrollView,
-  ActivityIndicator,FlatList
+  ActivityIndicator,TouchableOpacity
 } from 'react-native';
 import { borderBottomColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
@@ -127,8 +127,8 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
         setUploading(false)
         console.log("download url: ",url)
         const currentUser=auth.currentUser;
-        db.collection('Pictures')
-    .add({
+        db.collection('Pictures').doc(currentUser.uid)
+    .set({
       userId: currentUser.uid,
       postImg: url,
       postTime: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -143,10 +143,16 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
   }
   return(
     <View style={stylem.container}>
-      
-      
       <View style={stylem.camcontainer}>
-      <Text>Choose Category</Text>
+      <View style={{}}>
+      <TouchableOpacity style={{
+    position: 'absolute'
+  }} onPress={()=>navigation.navigate('Wardrobe')}>
+    <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'35%',marginLeft:'9%'}} />
+    </TouchableOpacity>
+    </View>
+      
+      <View style={{marginTop:'13%',marginHorizontal:'2%'}}><Text style={stylem.text}>Choose Category</Text>
         <DropDownPicker
       open={opencat}
       onOpen={onCatOpen}
@@ -158,7 +164,8 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
       zIndex={3000}
     zIndexInverse={1000}
     />
-      <Text>Choose Occasion</Text>
+    
+      <Text style={stylem.text}>Choose Occasion</Text>
         <DropDownPicker
       open={openstl}
       onOpen={onStlOpen}
@@ -170,7 +177,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
       zIndex={2000}
     zIndexInverse={2000}
     />
-    <Text>Choose Worn Status</Text>
+    <Text style={stylem.text}>Choose Worn Status</Text>
     <DropDownPicker
       open={openwo}
       onOpen={onWoOpen}
@@ -182,6 +189,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
       zIndex={1000}
     zIndexInverse={3000}
     />
+    </View>
         <ScrollView>
         <Button title='Choose Photo' onPress={() => pickImage()}/>
         <Button title='Take Picture' onPress={() => takePicture()}/>
@@ -236,5 +244,14 @@ const stylem = StyleSheet.create({
 fixedRatio:{
     flex: 1,
     aspectRatio: 1
-}
+},
+text: {
+    marginLeft: '3%',
+    marginRight:'2%',
+    fontFamily: 'AbrilFatface',
+    fontStyle: 'normal',
+    fontWeight: '200',
+    fontSize: 15,
+    lineHeight: 32,
+    color: '#5C514D'}
 });

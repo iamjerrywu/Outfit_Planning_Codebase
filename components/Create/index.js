@@ -10,14 +10,13 @@ const Create=({navigation})=>{
     const[occasion,setOccasion]=useState([{label:'Casual',value:'Casual'},
     {label:'Cocktail',value:'Cocktail'},
     {label:'Business',value:'Business'},
-    {label:'Fancy',value:'Fancy'},
-    {label:'Running Errands',value:'Running Errands'}
+    {label:'Sporty',value:'Sporty'}
   ]);
     return(
             <View style={styles.container}>
               <TouchableOpacity style={{
     position: 'absolute',
-  }} onPress={()=>navigation.navigate('Homepage')}>
+  }} onPress={()=>navigation.navigate('Wardrobe')}>
     <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'185%',marginLeft:'4%'}} />
     </TouchableOpacity>
     <View style={styles.box1}>

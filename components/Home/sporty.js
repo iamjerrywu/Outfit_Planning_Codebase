@@ -6,7 +6,7 @@ import { top_data } from '../Wardrobe/product_item';
 import Tabs from '../../navigation/tabs';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Styledbutton from '../StyledButton';
-const Running_errands=({navigation})=>{
+const Sporty=({navigation})=>{
     const isCarousel = React.useRef(null)
     const [uploading, setUploading] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0);
@@ -20,11 +20,11 @@ const Running_errands=({navigation})=>{
               <View style={styles.box1}>
                   <TouchableOpacity style={{
     position: 'absolute'
-}} onPress={()=>navigation.navigate('Home2_pickaday')}>
+}} onPress={()=>navigation.navigate('Create')}>
   <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'85%',marginLeft:'6%'}} />
   </TouchableOpacity>
     
-              <Text style={styles.title1}>Running Errands Outfit Suggestions</Text>
+              <Text style={styles.title1}>Sporty Outfit Suggestions</Text>
               </View>
               <View style={styles.box2}>
       <Carousel style={styles.carousel}
@@ -128,4 +128,4 @@ rbutton: {
 
 }
 });
-export default Running_errands;
+export default Sporty;
