@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component,useState,useRef } from 'react';
-import {View, Text,Image,TouchableOpacity, StyleSheet, Dimensions,Alert} from 'react-native';
+import {View, Text,Image,TouchableOpacity, StyleSheet, Dimensions, Alert} from 'react-native';
 import Carousel,{Pagination} from 'react-native-snap-carousel'
-import { cocktail_data } from '../Wardrobe/product_item';
+import { business_save_data } from '../Wardrobe/product_item';
 import Tabs from '../../navigation/tabs';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Styledbutton from '../StyledButton';
-const Cocktail=({navigation})=>{
+const Business_save=({navigation})=>{
     const isCarousel = React.useRef(null)
     const [uploading, setUploading] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0);
@@ -20,18 +20,18 @@ const Cocktail=({navigation})=>{
               <View style={styles.box1}>
                   <TouchableOpacity style={{
     position: 'absolute'
-}} onPress={()=>navigation.navigate('Home2_pickaday')}>
+}} onPress={()=>navigation.navigate('Wardrobe')}>
   <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'85%',marginLeft:'6%'}} />
   </TouchableOpacity>
     
-              <Text style={styles.title1}>Cocktail Outfit Suggestions</Text>
+              <Text style={styles.title1}>Business Saved Outfits</Text>
               </View>
               <View style={styles.box2}>
       <Carousel style={styles.carousel}
         layout="stack"
         layoutCardOffset={9}
         ref={isCarousel}
-        data={cocktail_data}
+        data={business_save_data}
         renderItem={({ item, index }) => (
             <Image
               key={index}
@@ -49,10 +49,7 @@ const Cocktail=({navigation})=>{
       />
       
     </View>
-    <View style={styles.button}>
-    {!uploading?<Styledbutton type="Style it seems" content="SAVE OUTFIT" onPress={()=>Alert.alert("Outfit was saved")}/>: <ActivityIndicator size="large" color="#000"/>}
     
-    </View>
               </View>
     );
 };
@@ -128,4 +125,4 @@ rbutton: {
 
 }
 });
-export default Cocktail;
+export default Business_save;

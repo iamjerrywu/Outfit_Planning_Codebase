@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component,useState,useRef } from 'react';
-import {View, Text,Image,TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import {View, Text,Image,TouchableOpacity, StyleSheet, Dimensions,Alert} from 'react-native';
 import Carousel,{Pagination} from 'react-native-snap-carousel'
 import { casual_data } from '../Wardrobe/product_item';
 import Tabs from '../../navigation/tabs';
@@ -13,14 +13,17 @@ const Casual=({navigation})=>{
     const onSelect = indexSelected => {
     setIndexSelected(indexSelected);
   };
-    const SLIDER_WIDTH = Dimensions.get('window').width + 80
-    const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
+    const SLIDER_WIDTH = Dimensions.get('window').width + 80;
+    const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
+    const saveOutfit = async () => {
+      casual_save_data.push({id:index,image:index.image});
+    }
     return(
         <View style={styles.container}>
               <View style={styles.box1}>
                   <TouchableOpacity style={{
     position: 'absolute'
-}} onPress={()=>navigation.navigate('Create')}>
+}} onPress={()=>navigation.navigate('Home2_pickaday')}>
   <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'85%',marginLeft:'6%'}} />
   </TouchableOpacity>
     

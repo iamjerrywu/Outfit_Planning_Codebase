@@ -1,12 +1,14 @@
 import React, { Component,useState,useEffect} from 'react';
-import {View, Text,StyleSheet,Button,Image,TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text,StyleSheet,Button,Image,TouchableOpacity, ScrollView,Dimensions} from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown-v2';
 import stylem_top from './stylem_top';
 import {firebase,auth,db} from '../firebase/config.js';
 import { FlatList } from 'react-native-gesture-handler';
 import {top_data} from './product_item';
 const Tops=({navigation})=>{
-  
+  const[image,setImage]=useState('');
+    
+    
 
     return(
     <View style={stylem_top.container}>
@@ -20,7 +22,7 @@ const Tops=({navigation})=>{
         
     </View>
     <View style={stylem_top.box2}>
-      <FlatList data={top_data} renderItem={({item})=> 
+    <FlatList data={top_data} renderItem={({item})=> 
       <Image source={item.image} style={{
         position:'relative',
         backgroundColor: '#fcf9f6',

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {View, Text,StyleSheet,Button,Image,TouchableOpacity, FlatList,} from 'react-native';
 import stylem_top from './stylem_top';
-import { bottomwear_data } from './product_item';
+import {bottomwear_data} from './add_category';
 const Bottomwear=({navigation})=>{
-  
+  console.log(bottomwear_data);
               return(
                 <View style={stylem_top.container}>
     <View>

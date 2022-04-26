@@ -13,6 +13,7 @@ import {
   ActivityIndicator,TouchableOpacity
 } from 'react-native';
 import { borderBottomColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { bottomwear_data } from './product_item.js';
 
 
 const Add_cat=({navigation})=>{
@@ -50,7 +51,8 @@ const Add_cat=({navigation})=>{
   const[stl,setStl]=useState([{label:'Casual',value:'Casual'},
   {label:'Cocktail',value:'Cocktail'},
   {label:'Business',value:'Business'},
-  {label:'Running Errands',value:'Running Errands'}
+  {label:'Sporty',value:'Sporty'}
+
 ]);
 const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
   {label:'Not Worn',value:'Not Worn'}])
@@ -79,7 +81,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4,3],
-      quality: 1,
+      quality: 0.05,
     });
 
     console.log(result);
@@ -96,6 +98,8 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
     return <View />
   }
   const uploadImage = async () => {
+    /*bottomwear_data.push({id:bottomwear_data.length+1,image:image});
+    console.log(bottomwear_data);*/
     const blob = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.onload = function() {
@@ -108,7 +112,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
       xhr.open('GET', image, true);
       xhr.send(null);
     });
-
+    
     const ref=firebase.storage().ref().child(new Date().toISOString());
     const snapshot=ref.put(blob);
 
@@ -126,8 +130,8 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
         setUploading(false)
         console.log("download url: ",url)
         const currentUser=auth.currentUser;
-        db.collection('Pictures').doc(currentUser.uid)
-    .set({
+        db.collection('Pictures')
+    .add({
       userId: currentUser.uid,
       postImg: url,
       postTime: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -147,11 +151,11 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
       <TouchableOpacity style={{
     position: 'absolute'
   }} onPress={()=>navigation.navigate('Wardrobe')}>
-    <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'35%',marginLeft:'9%'}} />
+    <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'10%',marginLeft:'9%'}} />
     </TouchableOpacity>
     </View>
       
-      <View style={{marginTop:'13%',marginHorizontal:'2%'}}><Text style={stylem.text}>Choose Category</Text>
+      <View style={{marginHorizontal:'7%',marginBottom:'25%'}}><Text style={stylem.text}>Choose Category</Text>
         <DropDownPicker
       open={opencat}
       onOpen={onCatOpen}
@@ -189,7 +193,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
     zIndexInverse={3000}
     />
     </View>
-        <ScrollView>
+        <ScrollView style={{marginTop:'10%'}}>
         <Button title='Choose Photo' onPress={() => pickImage()}/>
         <Button title='Take Picture' onPress={() => takePicture()}/>
         <Camera ref={ref => setCamera(ref)}/>
@@ -203,6 +207,7 @@ const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
     );
 };
 export default Add_cat;
+export {bottomwear_data};
 const stylem = StyleSheet.create({
   container: {
     flex: 1,
