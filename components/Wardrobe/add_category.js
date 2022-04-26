@@ -52,6 +52,7 @@ const Add_cat=({navigation})=>{
   {label:'Cocktail',value:'Cocktail'},
   {label:'Business',value:'Business'},
   {label:'Sporty',value:'Sporty'}
+
 ]);
 const[worn,setWorn]=useState([{label:'Worn',value:'Worn'},
   {label:'Not Worn',value:'Not Worn'}])

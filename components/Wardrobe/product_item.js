@@ -225,35 +225,5 @@ const top_data=[
           image:require('../../assets/sporty/sporty_3.png')
         }
       ];
-      const casual_save_data=[
-        {
-          id:3,
-          image:require('../../assets/casual/casual_3.png')
-        },
-        {
-          id:5,
-          image:require('../../assets/casual/casual_5.png')
-        }
-      ];
-      const cocktail_save_data=[
-        
-        {
-          id:2,
-          image:require('../../assets/cocktail/cocktail_2.png')
-        },
-      ];
-      const business_save_data=[
-        {
-          id:1,
-          image:require('../../assets/business/business_1.png')
-        }
-      ];
-      const sporty_save_data=[
-        {
-          id:1,
-          image:require('../../assets/sporty/sporty_1.png')
-        }
-      ];
-export {top_data,bottomwear_data,dress_data,jacket_data,
-  footwear_data,accessories_data, casual_data, cocktail_data, business_data, sporty_data,
-casual_save_data,business_save_data,sporty_save_data,cocktail_save_data};
+      
+export {top_data,bottomwear_data,dress_data,jacket_data,footwear_data,accessories_data, casual_data, cocktail_data, business_data, sporty_data,casual_save_data,business_save_data,sporty_save_data,cocktail_save_data};

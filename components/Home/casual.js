@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { Component,useState,useRef } from 'react';
 import {View, Text,Image,TouchableOpacity, StyleSheet, Dimensions,Alert} from 'react-native';
 import Carousel,{Pagination} from 'react-native-snap-carousel'
-import { casual_data,casual_save_data } from '../Wardrobe/product_item';
+import { casual_data } from '../Wardrobe/product_item';
 import Tabs from '../../navigation/tabs';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Styledbutton from '../StyledButton';
