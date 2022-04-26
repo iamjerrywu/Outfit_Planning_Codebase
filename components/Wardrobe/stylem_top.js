@@ -51,7 +51,7 @@ const stylem = StyleSheet.create({
     backgroundColor: '#f3f0ec',
     position:'absolute',
     marginTop: '20%',
-    width: '100%', height: 700
+    width: '100%', height: 600
   },
   image1: {
     position:'relative',

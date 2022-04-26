@@ -4,15 +4,17 @@ import stylem from './stylem';
 import Styledbutton from '../StyledButton';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {firebase,auth,db} from '../firebase/config.js';
+
 const currentUser=auth.currentUser;
 
 
 const Wardrobe=({navigation})=>{
-  const occasion=[{id:'Casual',value:'Casual'},
-    {id:'Cocktail',value:'Cocktail'},
-    {id:'Business',value:'Business'},
-    {id:'Sporty',value:'Sporty'}
+  const occasion=[{id:'Casual',value:'Casual_save'},
+    {id:'Cocktail',value:'Cocktail_save'},
+    {id:'Business',value:'Business_save'},
+    {id:'Sporty',value:'Sporty_save'}
   ];
+  
   return(
     <View style={stylem.container}>
     <View>
@@ -56,7 +58,7 @@ const Wardrobe=({navigation})=>{
       <View style={stylem.box3_1}>
       <FlatList data={occasion} renderItem={({item})=> 
       <TouchableOpacity style={stylem.cat1} onPress={()=>navigation.navigate(item.value)}>
-      <View style={stylem.box4}><Text style={stylem.ouft1}> {item.value}</Text></View>
+      <View style={stylem.box4}><Text style={stylem.ouft1}> {item.id}</Text></View>
     </TouchableOpacity>} keyExtractor={({id})=>id} style={{
         flex:1,
         position:'relative',

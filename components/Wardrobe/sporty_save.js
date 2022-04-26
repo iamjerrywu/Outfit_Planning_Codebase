@@ -2,11 +2,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { Component,useState,useRef } from 'react';
 import {View, Text,Image,TouchableOpacity, StyleSheet, Dimensions,Alert} from 'react-native';
 import Carousel,{Pagination} from 'react-native-snap-carousel'
-import { casual_data,casual_save_data } from '../Wardrobe/product_item';
+import { sporty_save_data } from '../Wardrobe/product_item';
 import Tabs from '../../navigation/tabs';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Styledbutton from '../StyledButton';
-const Casual=({navigation})=>{
+const Sporty_save=({navigation})=>{
     const isCarousel = React.useRef(null)
     const [uploading, setUploading] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0);
@@ -15,26 +15,23 @@ const Casual=({navigation})=>{
   };
     const SLIDER_WIDTH = Dimensions.get('window').width + 80;
     const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
-    const saveOutfit = async () => {
-      casual_save_data.push({id:index,image:index.image});
-    }
     return(
         <View style={styles.container}>
               <View style={styles.box1}>
                   <TouchableOpacity style={{
     position: 'absolute'
-}} onPress={()=>navigation.navigate('Home2_pickaday')}>
+}} onPress={()=>navigation.navigate('Wardrobe')}>
   <Image source={require('../../assets/images/arrowback.jpeg')} style={{width:25,height:25,marginTop:'85%',marginLeft:'6%'}} />
   </TouchableOpacity>
     
-              <Text style={styles.title1}>Casual Outfit Suggestions</Text>
+              <Text style={styles.title1}>Sporty Saved Outfits</Text>
               </View>
               <View style={styles.box2}>
       <Carousel style={styles.carousel}
         layout="stack"
         layoutCardOffset={9}
         ref={isCarousel}
-        data={casual_data}
+        data={sporty_save_data}
         renderItem={({ item, index }) => (
             <Image
               key={index}
@@ -52,10 +49,7 @@ const Casual=({navigation})=>{
       />
       
     </View>
-    <View style={styles.button}>
-    {!uploading?<Styledbutton type="Style it seems" content="SAVE OUTFIT" onPress={()=>Alert.alert("Outfit was saved")}/>: <ActivityIndicator size="large" color="#000"/>}
     
-    </View>
               </View>
     );
 };
@@ -69,7 +63,7 @@ title1: {
 position:'absolute',
 fontStyle: 'normal',
 fontWeight: '600',
-textAlign:'left',
+textAlign:'center',
 fontSize: 18,
 lineHeight: 58,
 color: '#5C514D',
@@ -77,10 +71,10 @@ marginTop: '6%',
 marginLeft: '10%',
 },
 box1:{
-width: 500,
+width: 300,
 height: 300,
 position:'absolute',
-marginTop: '8%',marginLeft:'3%'
+marginTop: '8%',marginLeft:'5%'
 },
 
 button: {
@@ -95,7 +89,7 @@ height: 340,
 
 position:'absolute',
 borderRadius: 10,
-marginTop: '40%',marginLeft:'-13%'
+marginTop: '50%',marginLeft:'-13%'
 },
 carousel:{
     
@@ -131,4 +125,4 @@ rbutton: {
 
 }
 });
-export default Casual;
+export default Sporty_save;
